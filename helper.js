@@ -10,7 +10,6 @@ function setSeats() {
 reset = () => {
   $('.paynow').hide();
   for (let i = 0; i < selected.length; i++) {
-    console.log(selected[i]);
     $('#' + selected[i]).removeClass('active');
     //noOfselectedseats--;
     prices = 0;
@@ -18,15 +17,11 @@ reset = () => {
   }
   noOfselectedseats = 0;
   isSelectFew = false;
-  //   createNRows(2, 'club');
-  //   createNRows(8, 'executive');
-  console.log('reset called');
   selectedCategory = null;
   selected = [];
 };
 //remove previous single element
 function selectNext() {
-  console.log({ selected });
   let first = selected.shift();
   $('#' + first).removeClass('active');
   noOfselectedseats--;
@@ -36,11 +31,6 @@ function setPrices(status) {
   if (selected.length !== noOfSeats) {
     return;
   }
-  //   if (status.includes('executive')) {
-  //     prices += 200;
-  //   } else if (status.includes('club')) {
-  //     prices += 300;
-  //   }
   prices = 0;
   for (let i = 0; i < selected.length; i++) {
     if (selected[i].includes('executive')) {
@@ -58,7 +48,6 @@ $(document).ready(function () {
 });
 
 function displayPayButton(selected, total) {
-  console.log('displayPayButton', selected, total);
   if (selected === total) {
     $('.paynow').show();
   }
@@ -93,9 +82,8 @@ createNdivs = (count, start, parent) => {
 clearreset = () => {
   $('.paynow').hide();
   for (let i = 0; i < selected.length; i++) {
-    console.log(selected[i]);
     $('#' + selected[i]).removeClass('active');
-    //noOfselectedseats--;
+    noOfselectedseats = 0;
     prices = 0;
     $('.prices').text('Total:' + prices);
   }

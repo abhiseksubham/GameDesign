@@ -10,7 +10,6 @@ createNRows(2, 'club');
 createNRows(8, 'executive');
 
 function dynamicEvent(e) {
-  console.log(selectedCategory);
   let status = $(event.currentTarget).attr('id');
   //same button click --> ignore it
   if (selected.includes(status)) {
@@ -38,17 +37,12 @@ function dynamicEvent(e) {
 selectTogther = status => {
   clearreset();
   let element = $('#' + status);
-  console.log(
-    '!status.includes(selectedCategory',
-    !status.includes(selectedCategory),
-  );
   if (!selectedCategory) {
     selectedCategory = status.includes('executive') ? 'executive' : 'club';
   } //select only from a single category
   else if (!status.includes(selectedCategory)) {
     return;
   }
-  console.log(checkifNSiblingsExistTog(element));
   if (checkifNSiblingsExistTog(element) && noOfSeats > 1) {
     for (let i = 0; i < noOfSeats && element.next(); i++) {
       element.addClass('active');
@@ -58,6 +52,7 @@ selectTogther = status => {
       element = element.next();
     }
     displayPayButton(noOfselectedseats, noOfSeats);
+    isSelectFew = false;
     return true;
   }
   //select current and few
@@ -68,14 +63,14 @@ selectTogther = status => {
 
 function selectFew(element) {
   isSelectFew = true;
-  console.log('selectFew', element);
-
   //terminating cases for recursion
   if (element.length === 0 || element.hasClass('initial')) {
     displayPayButton(noOfselectedseats, noOfSeats);
+
     return;
   } else if (noOfselectedseats === noOfSeats) {
     displayPayButton(noOfselectedseats, noOfSeats);
+
     return;
   }
   //if its not terminated , then
@@ -94,12 +89,10 @@ function checkifNSiblingsExistTog(el) {
   let result = true;
   for (let i = 0; i < noOfSeats; i++) {
     if (el.length === 0 || el.hasClass('initial')) {
-      console.log('false');
       result = false;
       return;
     }
     el = el.next();
-    console.log('checkifNSiblingsExistTog', el);
   }
   return result;
 }
