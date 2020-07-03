@@ -12,26 +12,45 @@ reset = () => {
   for (let i = 0; i < selected.length; i++) {
     console.log(selected[i]);
     $('#' + selected[i]).removeClass('active');
-    noOfselectedseats--;
+    //noOfselectedseats--;
     prices = 0;
     $('.prices').text('Total:' + prices);
   }
+  noOfselectedseats = 0;
+  isSelectFew = false;
+  //   createNRows(2, 'club');
+  //   createNRows(8, 'executive');
+  console.log('reset called');
+  selectedCategory = null;
+  selected = [];
 };
-
+//remove previous single element
 function selectNext() {
   console.log({ selected });
   let first = selected.shift();
   $('#' + first).removeClass('active');
   noOfselectedseats--;
 }
-
+//always check only from selected
 function setPrices(status) {
-  if (status.includes('executive')) {
-    prices += 200;
-  } else if (status.includes('club')) {
-    prices += 300;
+  if (selected.length !== noOfSeats) {
+    return;
+  }
+  //   if (status.includes('executive')) {
+  //     prices += 200;
+  //   } else if (status.includes('club')) {
+  //     prices += 300;
+  //   }
+  prices = 0;
+  for (let i = 0; i < selected.length; i++) {
+    if (selected[i].includes('executive')) {
+      prices += 200;
+    } else if (selected[i].includes('club')) {
+      prices += 300;
+    }
   }
   $('.prices').text('Total:' + prices);
+  //   $('.paynow').show();
 }
 
 $(document).ready(function () {
@@ -39,6 +58,7 @@ $(document).ready(function () {
 });
 
 function displayPayButton(selected, total) {
+  console.log('displayPayButton', selected, total);
   if (selected === total) {
     $('.paynow').show();
   }
@@ -60,10 +80,23 @@ createNdivs = (count, start, parent) => {
     let x = document.createElement('div');
     x.innerHTML = i + 1;
     if (start === 1 || start > 5) x.className = 'available';
-    else x.className = 'initial';
+    else if (Math.round(Math.random() * 10) % 2 == 0) {
+      x.className = 'available';
+    } else x.className = 'initial';
     x.id = parent + divid;
     x.onclick = dynamicEvent;
     a.appendChild(x);
     document.getElementById(parent).appendChild(a);
+  }
+};
+
+clearreset = () => {
+  $('.paynow').hide();
+  for (let i = 0; i < selected.length; i++) {
+    console.log(selected[i]);
+    $('#' + selected[i]).removeClass('active');
+    //noOfselectedseats--;
+    prices = 0;
+    $('.prices').text('Total:' + prices);
   }
 };
