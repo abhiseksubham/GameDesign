@@ -2,6 +2,7 @@ let selected = [];
 let prices = 0;
 let noOfSeats = 1;
 let noOfselectedseats = 0;
+let selectedCategory = null;
 const alphabet = Array.from(Array(26), (e, i) => String.fromCharCode(i + 65));
 createNRows = (count, divname) => {
   for (let i = 0; i < count; i++) {
@@ -42,6 +43,13 @@ function dynamicEvent(e) {
     $(event.currentTarget).hasClass('available') &&
     noOfselectedseats < noOfSeats
   ) {
+    if (noOfselectedseats === 0) {
+      selectedCategory = status.includes('executive') ? 'executive' : 'club';
+    }
+    //select only from a single category
+    if (noOfselectedseats >= 1 && !status.includes(selectedCategory)) {
+      return;
+    }
     noOfselectedseats++;
     console.log('inDynamicEvent', status);
     selected.push(status);
