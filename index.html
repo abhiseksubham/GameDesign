@@ -1,11 +1,54 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" type="text/css" href="custom.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="usr">No Of seats:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="seats"
+            max="10"
+            onchange="setSeats()"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="category">
+      <div>CLUB-Rs 300</div>
+    </div>
+    <div id="club" class="club"></div>
+    <div class="category">
+      <div>Executive-Rs 200</div>
+    </div>
+    <div id="executive"></div>
     <div id="container" class="container"></div>
-    <div class="final"></div>
+    <!-- <div>selected seatds are</div> -->
+    <div id="final"></div>
+    <span class="prices"></span>
+    <button
+      type="button"
+      class="paynow btn btn-danger"
+      onclick="window.location='https://dashboard.razorpay.com/#/access/signup';"
+    >
+      Pay Now
+    </button>
+
     <!-- <script src="main.js"></script> -->
     <script src="test.js"></script>
   </body>
