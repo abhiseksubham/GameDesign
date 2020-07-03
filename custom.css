@@ -1,0 +1,21 @@
+.tictacToe {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tictacToe td,
+.tictacToe th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tictacToe td:hover {
+  background-color: #ddd;
+}
+
+.active{
+    background-color: green;
+}
+
+
