@@ -1,4 +1,4 @@
-.tictacToe {
+/* .tictacToe {
   font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -14,8 +14,58 @@
   background-color: #ddd;
 }
 
-.active{
-    background-color: green;
+.active {
+  background-color: green;
+}
+.users {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
+.users td,
+.users th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
+.users tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.users tr:hover {
+  background-color: #ddd;
+}
+
+.users th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4caf50;
+  color: white;
+} */
+/* .container {
+  display: flex;
+} */
+.parent {
+  display: flex;
+}
+.initial {
+  border: 1px solid silver;
+  margin: 10px;
+  height: 50px;
+  width: 50px;
+  /* min-width: 100px; */
+  background-color: black;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  cursor: pointer;
+}
+
+.active {
+  background-color: green;
+}
