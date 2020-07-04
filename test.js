@@ -15,14 +15,17 @@ function dynamicEvent(e) {
   let status = $(event.currentTarget).attr('id');
   //same button click --> ignore it
   if (selected.includes(status)) {
-    return;
+    //return;
   }
   //select only from a single category
   if (noOfselectedseats >= 1 && !status.includes(selectedCategory)) {
     return;
   } else if (noOfselectedseats === noOfSeats) {
     //check if only one or more
-    selectNext(selected);
+    //selectNext(selected);
+    if (isSelectFew) {
+      removeOnePrevious();
+    } else removeAllPrevious();
   }
   if (
     $(event.currentTarget).hasClass('available') &&
@@ -49,7 +52,7 @@ selectTogther = status => {
     for (let i = 0; i < noOfSeats && element.next(); i++) {
       element.addClass('active');
       noOfselectedseats++;
-      selected.push(element[0].id);
+      if (!selected.includes(element[0].id)) selected.push(element[0].id);
       setPrices(element[0].id);
       element = element.next();
     }
@@ -68,7 +71,6 @@ function selectFew(element) {
   //terminating cases for recursion
   if (element.length === 0 || element.hasClass('initial')) {
     displayPayButton(noOfselectedseats, noOfSeats);
-
     return;
   } else if (noOfselectedseats === noOfSeats) {
     displayPayButton(noOfselectedseats, noOfSeats);

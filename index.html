@@ -15,49 +15,62 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="row">
-      <div class="col-md-3">
-        <div class="form-group">
-          <label for="usr">Choose No Of seats:</label>
-          <input
-            type="number"
-            class="form-control"
-            id="seats"
-            max="10"
-            value="1"
-            onchange="setSeats()"
-          />
+    <div class="parent-container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <label for="usr">Choose No Of seats:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="seats"
+              max="10"
+              value="1"
+              onchange="setSeats()"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <button type="button" class="reset btn btn-danger" onclick="reset()">
+            Reset
+          </button>
+        </div>
+        <div class="col-md-4">
+          <ul class="showcase">
+            <li>
+              <div class="available" id="executive1">1</div>
+              <small>Selected</small>
+            </li>
+            <li>
+              <div class="initial" id="executive46">1</div>
+              <small>Occupied</small>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-md-3">
-        <button type="button" class="reset btn btn-danger" onclick="reset()">
-          Reset
-        </button>
-      </div>
-    </div>
 
-    <div id="club" class="club">
-      <div class="category">
-        <div>CLUB-Rs 300</div>
+      <div id="club" class="club">
+        <div class="category">
+          <div>CLUB-Rs 300</div>
+        </div>
       </div>
-    </div>
 
-    <div id="executive">
-      <div class="category">
-        <div>Executive-Rs 200</div>
+      <div id="executive">
+        <div class="category">
+          <div>Executive-Rs 200</div>
+        </div>
       </div>
+      <div id="container" class="container"></div>
+      <!-- <div id="final"></div> -->
+      <span class="prices"></span>
+      <button
+        type="button"
+        class="paynow btn btn-danger"
+        onclick="window.location='https://dashboard.razorpay.com/#/access/signup';"
+      >
+        Pay Now
+      </button>
     </div>
-    <div id="container" class="container"></div>
-    <!-- <div id="final"></div> -->
-    <span class="prices"></span>
-    <button
-      type="button"
-      class="paynow btn btn-danger"
-      onclick="window.location='https://dashboard.razorpay.com/#/access/signup';"
-    >
-      Pay Now
-    </button>
-
     <script src="data.js"></script>
     <script src="helper.js"></script>
     <script src="test.js"></script>

@@ -22,10 +22,30 @@ reset = () => {
 };
 //remove previous single element
 function selectNext() {
+  if (selected.length === 0) {
+    return;
+  }
   let first = selected.shift();
   $('#' + first).removeClass('active');
   noOfselectedseats--;
+  if (!isselectFew) return selectNext();
 }
+
+removeAllPrevious = () => {
+  if (selected.length === 0) {
+    return;
+  }
+  let first = selected.shift();
+  $('#' + first).removeClass('active');
+  noOfselectedseats--;
+  return removeAllPrevious();
+};
+
+removeOnePrevious = () => {
+  let first = selected.shift();
+  $('#' + first).removeClass('active');
+  noOfselectedseats--;
+};
 //always check only from selected
 function setPrices(status) {
   if (selected.length !== noOfSeats) {
