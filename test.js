@@ -8,7 +8,7 @@ const alphabet = Array.from(Array(26), (e, i) => String.fromCharCode(i + 65));
 //create dynamic rows and columns
 for (let prop in data) {
   let el = data[prop];
-  createNRows(Number(el.rows), el.name);
+  createNRows(Number(el.rows), el.name, Number(el.columns));
 }
 
 function dynamicEvent(e) {

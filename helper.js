@@ -52,9 +52,9 @@ function displayPayButton(selected, total) {
     $('.paynow').show();
   }
 }
-createNRows = (count, divname) => {
+createNRows = (count, divname, col) => {
   for (let i = 0; i < count; i++) {
-    createNdivs(15, i, divname);
+    createNdivs(col, i, divname);
   }
 };
 createNdivs = (count, start, parent) => {
