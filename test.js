@@ -5,9 +5,11 @@ let noOfselectedseats = 0;
 let selectedCategory = null;
 let isSelectFew = false;
 const alphabet = Array.from(Array(26), (e, i) => String.fromCharCode(i + 65));
-
-createNRows(2, 'club');
-createNRows(8, 'executive');
+//create dynamic rows and columns
+for (let prop in data) {
+  let el = data[prop];
+  createNRows(Number(el.rows), el.name);
+}
 
 function dynamicEvent(e) {
   let status = $(event.currentTarget).attr('id');
